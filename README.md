@@ -1,1 +1,1 @@
-Term_Project
+Summary of the project: 
