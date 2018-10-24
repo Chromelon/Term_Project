@@ -18,9 +18,9 @@ header-includes: |
 
 ## Prototypes
 
-* [Lo-Fi Prototype](Plan.pdf)
-* [Med-Fi Prototype](Plan.pdf)
-* [Hi-Fi Prototype](Plan.pdf)
+* Click [here](Plan.pdf) to view the Lo-Fi Prototype, if not viewing standalone. Note: not available yet.
+* Click [here](Plan.pdf) to view the Med-Fi Prototype, if not viewing standalone. Note: not available yet.
+* Click [here](Plan.pdf) to view the Hi-Fi Prototype, if not viewing standalone. Note: not available yet.
 
 ## Schedule
 
