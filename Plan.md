@@ -8,7 +8,7 @@ linestretch: 1
 header-includes: |
 ---
 
-# ***NAME OF APP PLACEHOLDER***
+# Shiduly - A Chore Scheduling App
 
 ## Roles
 
@@ -18,9 +18,9 @@ header-includes: |
 
 ## Prototypes
 
-* Click [here](Plan.pdf) to view the Lo-Fi Prototype, if not viewing standalone. Note: not available yet.
-* Click [here](Plan.pdf) to view the Med-Fi Prototype, if not viewing standalone. Note: not available yet.
-* Click [here](Plan.pdf) to view the Hi-Fi Prototype, if not viewing standalone. Note: not available yet.
+* Lo-Fi Prototype &mdash; drawing of the user interface
+* Med-Fi Prototype &mdash; a working version of the user interface (no actual task functionality, yet)
+* Hi-Fi Prototype &mdash; task scheduling working
 
 ## Schedule
 
