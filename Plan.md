@@ -10,17 +10,18 @@ header-includes: |
 
 # Shiduly - A Chore Scheduling App
 
-## Roles
+## Tasks
 
-* Ben Baer - Lead Programmer
-* Brian Choi - Marketing
-* Chris Fuentes - Design
-
-## Prototypes
-
-* Lo-Fi Prototype &mdash; drawing of the user interface
-* Med-Fi Prototype &mdash; a working version of the user interface (no actual task functionality, yet)
-* Hi-Fi Prototype &mdash; task scheduling working
+* Ben Baer
+  * Design application
+  * Figure out and implement scheduling logic
+* Brian Choi
+  * Come up with name
+  * Design application
+  * Design marketing material
+* Chris Fuentes
+  * Design application
+  * Help build the website
 
 ## Schedule
 
