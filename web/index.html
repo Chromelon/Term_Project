@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/shiduly.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=Mukta+Mahee|Poiret+One" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type='text/javascript' src='js/shiduly.js'></script> 
+    <title>Shiduly</title>
+  </head>
+
+  <body>
+    <div id="topbar"> 
+      <img id="topbarimg" src="img/ShidulyLogo.png"/> 
+      <h1 id="title">hiduly</h1>
+      <div id="settingsMenu"> 
+        <button onclick="settingsDropdown()" id="settingsButton">&#9881;</button>
+        <div id="settingsDropdown" class="settingsContent">
+          <a href="#">Schedule Busy Hours</a>
+          <a href="#">Schedule Free Hours</a>
+        </div>
+      </div> 
+    </div>
+
+    <div id="columns">
+      <div class="bar" id="allChores">
+        <h1 class="barhead" id="allChores"><img class="hicon" id="achoresimg" src="img/achores.svg"/> All Chores</h1>
+        <ul>
+          <li><button class="barbutton">Task 1  </button></li>
+          <li><button class="barbutton">Task 2</button></li>
+          <li><button class="barbutton">Task 3</button></li>
+          <li><button class="barbutton">Task 4</button></li>
+          <li><button class="barbutton">+ Add more chores</button></li>
+        </ul>
+      </div>
+      <div class="bar" id="myUpcomingChores">
+        <h1 class="barhead" id="upcomingChores"><img class="hicon" id="mchoresimg" src="img/mchores.svg"/> My Upcoming Chores</h1>
+        <ul>
+          <li><button class="barbutton">Task 1</button></li>
+          <li><button class="barbutton">Task 2</button></li>
+          <li><button class="barbutton">Task 3</button></li>
+          <li><button class="barbutton">Task 4</button></li>
+          <li><button class="barbutton">+ Add more chores</button></li>
+        </ul>
+      </div>
+      <div class="bar" id="trades">
+        <h1 class="barhead" id="trades"><img class="hicon" id="tradesimg" src="img/trades.svg"/> Trades</h1>
+        <ul>
+          <li><button class="barbutton">Trade 1</button></li>
+          <li><button class="barbutton">Trade 2</button></li>
+          <li><button class="barbutton">Trade 3</button></li>
+          <li><button class="barbutton">Trade 4</button></li>
+          <li><button class="barbutton">+ Offer chore trade</button></li>
+        </ul>
+      </div>
+      <div class="bar" id="teamMembers">
+        <h1 class="barhead" id="teamMembers"><img class="hicon" id="teamimg" src="img/team.svg"/> Team Members</h1>
+        <ul>
+          <li><button class="barbutton">Team Member 1</button></li>
+          <li><button class="barbutton">Team Member 2</button></li>
+          <li><button class="barbutton">Team Member 3</button></li>
+          <li><button class="barbutton">Team Member 4</button></li>
+          <li><button class="barbutton">+ Add more team members</button></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  
+</html>
