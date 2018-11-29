@@ -1,0 +1,20 @@
+{
+  "allChores": [
+    {
+      "choreName": "Trash", //name of chore
+      "choreStatus": "Incomplete", //status
+      "choreDueDate": "2019-01-01", //due date
+      "chorePrio": "5", //priority, from 1-5
+      "choreTime": "5" //estimated time to complete, in minutes
+    }
+  ],
+  "myUpcoming": [
+
+  ],
+  "trades":[
+
+  ],
+  "teamMembers":[
+
+  ]
+}
