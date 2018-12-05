@@ -10,45 +10,27 @@ function addTask() {
   task_add.style.top = "90px";
   task_add.id = "task_adder";
   task_add.style.background = "#aeaeae";
-  task_add_html = "<p>Input the details about the chore</p>"
-  task_add_html += "<form action=\"/add_task.php\">"
-  task_add_html += "Job Description:</br>"
-  task_add_html += "<input type=\"text\" name=\"jobdesc\"\>"
-  task_add
-  task_add_html += "</form>"
+  task_add_html = "<p>Input the details about the chore</p>";
+  task_add_html += "<form class=\"addinput\" action=\"submit_task.php\" method=\"post\">";
+  task_add_html += "Job Description:</br>";
+  task_add_html += "<input class=\"addinput\" type=\"text\" name=\"jobdesc\"> </br>";
+  task_add_html += "Priority:</br>";
+  task_add_html += "<input class=\"addinput\" type=\"radio\" name=\"priority\" value=\"1\">1</input>";
+  task_add_html += "<input class=\"addinput\" type=\"radio\" name=\"priority\" value=\"2\">2</input>";
+  task_add_html += "<input class=\"addinput\" type=\"radio\" name=\"priority\" value=\"3\">3</input>";
+  task_add_html += "<input class=\"addinput\" type=\"radio\" name=\"priority\" value=\"4\">4</input>";
+  task_add_html += "<input class=\"addinput\" type=\"radio\" name=\"priority\" value=\"5\">5</input> </br>";
+  task_add_html += "Time (in minutes):</br>";
+  task_add_html += "<input class=\"addinput\" type=\"text\" name=\"time\"> </br>";
+  task_add_html += "<input class=\"addinput\" type=\"submit\" value=\"Add Task\"> </br>";
+  task_add_html += "</form>";
   task_add.innerHTML = task_add_html;
   document.getElementById("columns").appendChild(task_add);
   window.onclick = function(event) {
-    if (!event.target.matches('#task_adder') && !event.target.matches('#add-task') && !event.target.matches('#add-my-task') && !event.target.matches('.addbutton')) {
+    if (!event.target.matches('#task_adder') && !event.target.matches('#add-task') && !event.target.matches('#add-my-task') && !event.target.matches('.addbutton') && !event.target.matches('.addinput')) {
       document.getElementById("task_adder").remove();
     }
   } 
-}
-
-function suggestTrade() {
-  var suggest_trade = document.createElement("div");
-  var members = document.getElementById("teamMembersList").getElementsByTagName("li");
-  suggest_trade.style.position = "absolute";
-  suggest_trade.style.width = "33%";
-  suggest_trade.style.height = "90%";
-  suggest_trade.style.top = "90px";
-  suggest_trade.id = "trade_suggester";
-  suggest_trade.style.background = "#aeaeae";
-  suggest_trade_html = "<p>Select who you want to trade with</p>"
-  suggest_trade_html += "<ul>";
-  for(i = 0; i < members.length-1; i++){
-    suggest_trade_html += "<li>";
-    suggest_trade_html += members[i].innerHTML
-    suggest_trade_html += "</li>";
-  }
-  suggest_trade_html += "</ul>"
-  suggest_trade.innerHTML = suggest_trade_html;
-  document.getElementById("columns").appendChild(suggest_trade);
-  window.onclick = function(event) {
-    if (!event.target.matches('#trade_suggester') && !event.target.matches('#add-trade') && !event.target.matches('.addbutton') && !event.target.matches('.barbutton')) {
-      document.getElementById("trade_suggester").remove();
-    }
-  }
 }
 
 function addMember() {
@@ -60,13 +42,32 @@ function addMember() {
   member_add.id = "member_adder";
   member_add.style.background = "#aeaeae";
   member_add_html = "<p>Input team members name</p>";
+  member_add_html += "<form class=\"addinput\" action=\"submit_member.php\" method=\"post\">";
+  member_add_html += "First Name:</br>";
+  member_add_html += "<input class=\"addinput\" type=\"text\" name=\"firstName\"></br>";
+  member_add_html += "Last Name:</br>";
+  member_add_html += "<input class=\"addinput\" type=\"text\" name=\"lastName\"></br>";
+  member_add_html += "<input class=\"addinput\" type=\"submit\" value=\"Add Member\"></br>";
   member_add.innerHTML = member_add_html;
   document.getElementById("columns").appendChild(member_add);
   window.onclick = function(event) {
-    if (!event.target.matches('#member_adder') && !event.target.matches('#add-member') && !event.target.matches('.addbutton')) {
+    if (!event.target.matches('#member_adder') && !event.target.matches('#add-member') && !event.target.matches('.addbutton') && !event.target.matches('.addinput')) {
       document.getElementById("member_adder").remove();
     }
   }
+}
+
+function changeUser(memberid){
+  var form = document.createElement("form");
+  form.setAttribute("method", "post");
+  form.setAttribute("action", "index.php");
+  var hiddenField=document.createElement("input");
+  hiddenField.setAttribute("type", "hidden");
+  hiddenField.setAttribute("name", 'curr_user');
+  hiddenField.setAttribute("value", memberid);
+  form.appendChild(hiddenField);
+  document.body.appendChild(form);
+  form.submit();
 }
 
 window.onclick = function(event) {
@@ -82,3 +83,17 @@ window.onclick = function(event) {
     }
   }
 }
+
+$(document).ready(function() {
+  $(".barbutton").click(function() {
+    if(this.id[1] == 'o'){
+      var task_panel = document.createElement("div");
+    }
+    if(this.id[1] == 'y'){
+      var my_task_panel = document.createElement("div");
+    }
+    if(this.id[1] == 'e'){
+      var member_panel = document.createElement("div");
+    }
+  });
+});

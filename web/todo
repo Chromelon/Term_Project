@@ -1,0 +1,5 @@
+shiduly.js:
+  write the panels
+    task panels should show prio, time, "claim task" if not my_task_panel, and "done" which deletes task
+    member panels should show delete member
+    
