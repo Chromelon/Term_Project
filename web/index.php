@@ -120,8 +120,13 @@
           ?>
         </div>
         <div class="bar" id="myUpcomingChores">
-          <h1 class="barhead" id="upcomingChores"><img class="hicon" id="mchoresimg" src="img/mchores.svg"/> My Upcoming Chores</h1>
           <?php
+            if($curr_user != 0){
+              echo '<h1 class="barhead" id="upcomingChores"><img class="hicon" id="mchoresimg" src="img/mchores.svg"/> My Upcoming Chores</h1>';
+            }
+            else{
+              echo '<h1 class="barhead" id="upcomingChores"><img class="hicon" id="mchoresimg" src="img/mchores.svg"/> Unassigned Chores</h1>';
+            }
             if ($dbOk) {
               $query = 'select * from allTasks order by assignedMember, jobid';
               $result = $db->query($query);
