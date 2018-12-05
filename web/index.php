@@ -30,6 +30,36 @@
     else{
       $curr_user = 0;
     }
+    if(isset($_POST['show_task'])){
+      $show_task = $_POST['show_task'];
+    }
+    else{
+      $show_task = FALSE;
+    }
+    if(isset($_POST['show_my_task'])){
+      $show_my_task = $_POST['show_my_task'];
+    }
+    else{
+      $show_my_task = FALSE;
+    }
+    if(isset($_POST['show_members'])){
+      $show_members = $_POST['show_members'];
+    }
+    else{
+      $show_members = FALSE;
+    }
+    if(isset($_POST['selectedjobid'])){
+      $selectedjobid = $_POST['selectedjobid'];
+    }
+    else{
+      $selectedjobid = 0;
+    }
+    if(isset($_POST['selectedmemberid'])){
+      $selectedmemberid = $_POST['selectedmemberid'];
+    }
+    else{
+      $selectedmemberid = 0;
+    }
   ?>  
 
   <body>
@@ -75,19 +105,12 @@
                 $record = $result->fetch_assoc();
                 echo '<li><button id="job-';
                 echo htmlspecialchars($record['jobid']);
-                echo '" class="barbutton">';
+                echo '" class="barbutton" onclick="taskPanel(';
+                echo htmlspecialchars($record['jobid']);
+                echo ', ';
+                echo $curr_user;
+                echo ')">';
                 echo htmlspecialchars($record['jobdesc']);
-                echo ', Priority: ';
-                echo htmlspecialchars($record['priority']);
-                $minutes = $record['time'];
-                $hours = 0;
-                if($minutes > 60){
-                  $minutes -= 60;
-                  $hours += 1;
-                }
-                $minutes_string = sprintf("%02d", $minutes);
-                $hours_string = sprintf("%02d", $hours);
-                echo ', Time: ' . $hours_string . ':' . $minutes_string;
                 echo '</button></li>';
               }
               echo '<li><button id="add-task" class="barbutton" onclick="addTask()">+ Add more chores</button></li>';
@@ -110,19 +133,12 @@
                 if($curr_user == $record['assignedMember']){
                   echo '<li><button id="myjob-';
                   echo htmlspecialchars($record['jobid']);
-                  echo '" class="barbutton">';
+                  echo '" class="barbutton" onclick="myTaskPanel(';
+                  echo htmlspecialchars($record['jobid']);
+                  echo ', ';
+                  echo $curr_user;
+                  echo ')">';
                   echo htmlspecialchars($record['jobdesc']);
-                  echo ', Priority: ';
-                  echo htmlspecialchars($record['priority']);
-                  $minutes = $record['time'];
-                  $hours = 0;
-                  if($minutes > 60){
-                    $minutes -= 60;
-                    $hours += 1;
-                  }
-                  $minutes_string = sprintf("%02d", $minutes);
-                  $hours_string = sprintf("%02d", $hours);
-                  echo ', Time: ' . $hours_string . ':' . $minutes_string;
                   echo '</button></li>';
                 }
               }
@@ -143,19 +159,80 @@
                 $record = $result->fetch_assoc();
                 echo '<li><button id="member-';
                 echo htmlspecialchars($record['memberid']);
-                echo '" class="barbutton">';
+                echo '" class="barbutton" onclick="memberPanel(';
+                echo htmlspecialchars($record['memberid']);
+                echo ', ';
+                echo $curr_user;
+                echo ')">';
                 echo htmlspecialchars($record['firstName']) . " " . htmlspecialchars($record['lastName']);
                 echo '</button></li>';
               }
               echo '<li><button id="add-member" class="barbutton" onclick="addMember()">+ Add team members</button></li>';
               echo '</ul>';
               $result->free();
-              
-              // Finally, let's close the database
-              $db->close();
             }
           ?>
         </div>
+        <?php
+          if($show_task){
+            if ($dbOk) {
+              $query = 'select * from allTasks where jobid = ' . $selectedjobid;
+              $result = $db->query($query);
+              $record = $result->fetch_assoc();
+              echo '<div class="panel" id="task_panel">';
+              echo 'Priority: ';
+              echo $record['priority'];
+              echo '<br/>Time: ';
+              $minutes = $record['time'];
+              $hours = 0;
+              if($minutes > 60){
+                $minutes -= 60;
+                $hours += 1;
+              }
+              $minutes_string = sprintf("%02d", $minutes);
+              $hours_string = sprintf("%02d", $hours);
+              echo $hours_string . ':' . $minutes_string;
+              echo '<br/><button onclick="claimTask(' . $selectedjobid . ',' . $curr_user . ')">Claim Task</button>';
+              echo '</div>';
+            }
+          }
+          if($show_my_task){
+            if ($dbOk) {
+              $query = 'select * from allTasks where jobid = ' . $selectedjobid;
+              $result = $db->query($query);
+              $record = $result->fetch_assoc();
+              echo '<div class="panel" id="my_task_panel">';
+              echo 'Priority: ';
+              echo $record['priority'];
+              echo '<br/>Time: ';
+              $minutes = $record['time'];
+              $hours = 0;
+              if($minutes > 60){
+                $minutes -= 60;
+                $hours += 1;
+              }
+              $minutes_string = sprintf("%02d", $minutes);
+              $hours_string = sprintf("%02d", $hours);
+              echo $hours_string . ':' . $minutes_string;
+              echo '<br/><button onclick="deleteTask(' . $selectedjobid . ',' . $curr_user . ')">Complete Task</button';
+              echo '</div>';
+            }
+          }
+          if($show_members){
+            if ($dbOk) {
+              $query = 'select * from teamMembers where memberid = ' . $selectedmemberid;
+              $result = $db->query($query);
+              $record = $result->fetch_assoc();
+              echo '<div class="panel" id="member_panel">';
+              echo 'Name: ';;
+              echo $record['firstName'] . " " . $record['lastName'];
+              echo '<br/><button onclick="deleteMember(' . $selectedmemberid . ',' . $curr_user . ')">Delete Member</button';
+              echo '</div>';
+            }
+            // Finally, let's close the database
+            $db->close();
+          }
+        ?>
     </div>
   </body>
   

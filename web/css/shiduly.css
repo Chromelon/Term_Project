@@ -140,13 +140,21 @@ body {
   vertical-align: middle;
 }
 
+.panel{
+  position: absolute;
+  width: 33%;
+  height: 90%;
+  top: 90px;
+  background: #aeaeae;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-li{
+li {
   background: #FFFFFF;
   margin: 15px;
   height: 50px;

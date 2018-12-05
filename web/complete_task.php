@@ -3,12 +3,12 @@
   if ($db->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   } 
-  $sql = "INSERT INTO teamMembers (`firstName`, `lastName`) VALUES ('" . $_POST['firstName'] . "', '" . $_POST['lastName'] . "')";
+  $sql = "DELETE FROM allTasks WHERE `jobid` = " . $_POST['jobid'];
 ?>
 <form id="complete" action="index.php" method="post">
 <?php 
   if($db->query($sql) === TRUE){
-    echo '<input type="hidden"  name="curr_user" value="0">';
+    echo '<input type="hidden"  name="curr_user" value="' . $_POST['curr_user'] . '">';
   }
   else{
     echo $db->error;

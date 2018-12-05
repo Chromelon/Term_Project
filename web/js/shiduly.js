@@ -70,9 +70,136 @@ function changeUser(memberid){
   form.submit();
 }
 
+function claimTask(jobid, memberid){
+  var form = document.createElement("form");
+  form.setAttribute("method", "post");
+  form.setAttribute("action", "grab_task.php");
+  var hiddenField_1=document.createElement("input");
+  hiddenField_1.setAttribute("type", "hidden");
+  hiddenField_1.setAttribute("name", 'assignedMember');
+  hiddenField_1.setAttribute("value", memberid);
+  form.appendChild(hiddenField_1);
+  var hiddenField_2=document.createElement("input");
+  hiddenField_2.setAttribute("type", "hidden");
+  hiddenField_2.setAttribute("name", 'jobid');
+  hiddenField_2.setAttribute("value", jobid);
+  form.appendChild(hiddenField_2);
+  var hiddenField_3=document.createElement("input");
+  hiddenField_3.setAttribute("type", "hidden");
+  hiddenField_3.setAttribute("name", "curr_user");
+  hiddenField_3.setAttribute('value', memberid);
+  form.appendChild(hiddenField_3);
+  document.body.appendChild(form);
+  form.submit();
+}
+
+function deleteTask(jobid, curr_user){
+  var form = document.createElement("form");
+  form.setAttribute("method", "post");
+  form.setAttribute("action", "complete_task.php");
+  var hiddenField_1=document.createElement("input");
+  hiddenField_1.setAttribute("type", "hidden");
+  hiddenField_1.setAttribute("name", 'jobid');
+  hiddenField_1.setAttribute("value", jobid);
+  form.appendChild(hiddenField_1)
+  var hiddenField_2=document.createElement("input");
+  hiddenField_2.setAttribute("type", "hidden");
+  hiddenField_2.setAttribute("name", "curr_user");
+  hiddenField_2.setAttribute('value', curr_user);
+  form.appendChild(hiddenField_2);
+  document.body.appendChild(form);
+  form.submit();
+}
+
+function deleteMember(memberid, curr_user){
+  var form = document.createElement("form");
+  form.setAttribute("method", "post");
+  form.setAttribute("action", "delete_member.php");
+  var hiddenField_1=document.createElement("input");
+  hiddenField_1.setAttribute("type", "hidden");
+  hiddenField_1.setAttribute("name", 'memberid');
+  hiddenField_1.setAttribute("value", memberid);
+  form.appendChild(hiddenField_1);
+  var hiddenField_2=document.createElement("input");
+  hiddenField_2.setAttribute("type", "hidden");
+  hiddenField_2.setAttribute("name", "curr_user");
+  hiddenField_2.setAttribute('value', curr_user);
+  form.appendChild(hiddenField_2);
+  document.body.appendChild(form);
+  form.submit();
+}
+
+function taskPanel(jobid, curr_user){
+  var form = document.createElement("form");
+  form.setAttribute("method", "post");
+  form.setAttribute("action", "index.php");
+  var hiddenField_1=document.createElement("input");
+  hiddenField_1.setAttribute("type", "hidden");
+  hiddenField_1.setAttribute("name", "show_task");
+  hiddenField_1.setAttribute("value", true);
+  form.appendChild(hiddenField_1)
+  var hiddenField_2=document.createElement("input");
+  hiddenField_2.setAttribute("type", "hidden");
+  hiddenField_2.setAttribute("name", "selectedjobid");
+  hiddenField_2.setAttribute('value', jobid);
+  form.appendChild(hiddenField_2);
+  var hiddenField_3=document.createElement("input");
+  hiddenField_3.setAttribute("type", "hidden");
+  hiddenField_3.setAttribute("name", "curr_user");
+  hiddenField_3.setAttribute('value', curr_user);
+  form.appendChild(hiddenField_3);
+  document.body.appendChild(form);
+  form.submit();
+}
+
+function myTaskPanel(jobid, curr_user){
+  var form = document.createElement("form");
+  form.setAttribute("method", "post");
+  form.setAttribute("action", "index.php");
+  var hiddenField_1=document.createElement("input");
+  hiddenField_1.setAttribute("type", "hidden");
+  hiddenField_1.setAttribute("name", "show_my_task");
+  hiddenField_1.setAttribute("value", true);
+  form.appendChild(hiddenField_1)
+  var hiddenField_2=document.createElement("input");
+  hiddenField_2.setAttribute("type", "hidden");
+  hiddenField_2.setAttribute("name", "selectedjobid");
+  hiddenField_2.setAttribute('value', jobid);
+  form.appendChild(hiddenField_2);
+  var hiddenField_3=document.createElement("input");
+  hiddenField_3.setAttribute("type", "hidden");
+  hiddenField_3.setAttribute("name", "curr_user");
+  hiddenField_3.setAttribute('value', curr_user);
+  form.appendChild(hiddenField_3);
+  document.body.appendChild(form);
+  form.submit();
+}
+
+function memberPanel(memberid, curr_user){
+  var form = document.createElement("form");
+  form.setAttribute("method", "post");
+  form.setAttribute("action", "index.php");
+  var hiddenField_1=document.createElement("input");
+  hiddenField_1.setAttribute("type", "hidden");
+  hiddenField_1.setAttribute("name", "show_members");
+  hiddenField_1.setAttribute("value", true);
+  form.appendChild(hiddenField_1)
+  var hiddenField_2=document.createElement("input");
+  hiddenField_2.setAttribute("type", "hidden");
+  hiddenField_2.setAttribute("name", "selectedmemberid");
+  hiddenField_2.setAttribute('value', memberid);
+  form.appendChild(hiddenField_2);
+  var hiddenField_3=document.createElement("input");
+  hiddenField_3.setAttribute("type", "hidden");
+  hiddenField_3.setAttribute("name", "curr_user");
+  hiddenField_3.setAttribute('value', curr_user);
+  form.appendChild(hiddenField_3);
+  document.body.appendChild(form);
+  form.submit();
+}
+
 window.onclick = function(event) {
   if (!event.target.matches('#settingsButton')) {
-
     var dropdowns = document.getElementsByClassName("settingsContent");
     var i;
     for (i = 0; i < dropdowns.length; i++) {
@@ -83,17 +210,3 @@ window.onclick = function(event) {
     }
   }
 }
-
-$(document).ready(function() {
-  $(".barbutton").click(function() {
-    if(this.id[1] == 'o'){
-      var task_panel = document.createElement("div");
-    }
-    if(this.id[1] == 'y'){
-      var my_task_panel = document.createElement("div");
-    }
-    if(this.id[1] == 'e'){
-      var member_panel = document.createElement("div");
-    }
-  });
-});

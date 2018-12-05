@@ -4,7 +4,7 @@
   if ($db->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   } 
-  $sql = "UPDATE allTasks SET `assignedMember` = " . $_POST['assignedMember'] . "  WHERE `jobid` = " . $_POST['jobid'];
+  $sql = "DELETE FROM teamMembers WHERE `memberid` = " . $_POST['memberid'];
 
   if($db->query($sql) === TRUE){
     echo '<input type="hidden"  name="curr_user" value="' . $_POST['curr_user'] . '">';
