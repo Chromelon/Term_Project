@@ -33,6 +33,8 @@ and further refined on this with our high-fidelity prototype.
 
 ![our high-fidelity mockup](images/hiFi.png)
 
+\newpage
+
 # Conclusion
 
 Overall, the simple design we picked, along with making the application touch friendly, makes Shiduly a simple, easy-to-use application that can help a lot with keeping roommates chores in check.
